@@ -1,6 +1,6 @@
 {
   "name": "noauth-twitterfeed",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "retrieves a Twitter timeline -- without Twitter API authentication!",
   "main": "index.js",
   "scripts": {
