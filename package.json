@@ -1,0 +1,39 @@
+{
+  "name": "noauth-twitterfeed",
+  "version": "1.0.0",
+  "description": "retrieves a Twitter timeline -- without Twitter API authentication!",
+  "main": "index.js",
+  "scripts": {
+    "watch": "watchify example.js -p [ browserify-livereload --host 127.0.0.1 --port 1337 ] -o bundle.js",
+    "www": "ecstatic ./ -p 5000 -H 'Access-Control-Allow-Origin: *'",
+    "start": "npm run watch & npm run www",
+    "build": "browserify > bundle.js",
+    "open": "opn http://0.0.0.0:5000/ -- 'google chrome'",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ninabreznik/noauth-twitterfeed.git"
+  },
+  "keywords": [
+    "twitter",
+    "feed",
+    "no",
+    "authentication"
+  ],
+  "author": "ninabreznik",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ninabreznik/noauth-twitterfeed/issues"
+  },
+  "homepage": "https://github.com/ninabreznik/noauth-twitterfeed#readme",
+  "dependencies": {
+    "browserify": "^14.4.0",
+    "browserify-livereload": "^1.0.10",
+    "ecstatic": "^2.2.1",
+    "minixhr": "^3.2.2",
+    "opn-cli": "^3.1.0",
+    "urify-emitter": "^1.1.2",
+    "watchify": "^3.9.0"
+  }
+}
