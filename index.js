@@ -1,9 +1,10 @@
 var minixhr = require('minixhr')
 
-module.exports = function (username, cb) {
+module.exports = function (opts = {}, cb) {
 
-  var url = 'https://twitter.com/' + username
-  url = 'https://cors-anywhere.herokuapp.com/' + url
+  var url = 'https://twitter.com/' + opts.username
+  var cors = 'https://cors-anywhere.herokuapp.com/'
+  url = (opts.cors || cors) + url  
 
   minixhr(url, response)
   var res = []
