@@ -4,7 +4,7 @@ module.exports = function (opts = {}, cb) {
 
   var url = 'https://twitter.com/' + opts.username
   var cors = 'https://cors-anywhere.herokuapp.com/'
-  url = (opts.cors || cors) + url  
+  url = (opts.cors || cors) + url
 
   minixhr(url, response)
   var res = []
@@ -32,7 +32,7 @@ module.exports = function (opts = {}, cb) {
       res.push({
         username: item.username,
         fullname: item.fullname,
-        retweet: item.username.toLowerCase() !== '@'+username.toLowerCase(),
+        retweet: item.username.toLowerCase() !== '@'+opts.username.toLowerCase(),
         url: item.url,
         content: item.body,
         date: item.timestamp

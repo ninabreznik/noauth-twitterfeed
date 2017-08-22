@@ -16,7 +16,7 @@ use it without any configuration in the browser using e.g.
 ```js
 var twitterFeed = require('noauth-twitterfeed')
 
-twitterFeed('ninabreznik', function (err, tweets) {
+twitterFeed({ username: 'ninabreznik' }, function (err, tweets) {
   console.log(tweets)
 })
 ```
@@ -61,9 +61,9 @@ var noauth-twitterfeed = require('noauth-twitterfeed')
 
 Clone the repository and run `npm start` to see the example.js or [see the demo page](https://ninabreznik.github.io/noauth-twitterfeed/)
 
-### noauth-twitterfeed(username, cb(err, tweets))
+### noauth-twitterfeed({ username }, cb(err, tweets))
 
-Specify a `username` of the timeline you want. The callback `cb` will contain an
+Specify a `username` of the timeline and optionally another CORS proxy url. The callback `cb` will contain an
 optional error as its first parameter, and an array with the user's latest
 tweets as its second parameter.
 

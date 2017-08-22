@@ -16,7 +16,7 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var twitterFeed = require('.')
 
-twitterFeed('ninabreznik', function (err, tweets) {
+twitterFeed({username:'ninabreznik'}, function (err, tweets) {
   document.body.innerHTML = `<xmp>${JSON.stringify(tweets, null, 2)}</xmp>`
   console.log(tweets)
 })
@@ -24,10 +24,11 @@ twitterFeed('ninabreznik', function (err, tweets) {
 },{".":2}],2:[function(require,module,exports){
 var minixhr = require('minixhr')
 
-module.exports = function (username, cb) {
+module.exports = function (opts = {}, cb) {
 
-  var url = 'https://twitter.com/' + username
-  url = 'https://cors-anywhere.herokuapp.com/' + url
+  var url = 'https://twitter.com/' + opts.username
+  var cors = 'https://cors-anywhere.herokuapp.com/'
+  url = (opts.cors || cors) + url
 
   minixhr(url, response)
   var res = []
@@ -55,7 +56,7 @@ module.exports = function (username, cb) {
       res.push({
         username: item.username,
         fullname: item.fullname,
-        retweet: item.username.toLowerCase() !== '@'+username.toLowerCase(),
+        retweet: item.username.toLowerCase() !== '@'+opts.username.toLowerCase(),
         url: item.url,
         content: item.body,
         date: item.timestamp
